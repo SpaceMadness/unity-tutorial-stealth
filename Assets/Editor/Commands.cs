@@ -69,6 +69,16 @@ class EnableDisableCommand : CPlayModeCommand // only available in play mode
 		{
 			DebugCheat.disableEnemyAI = !enabled; // 'disable' is opposite to 'enable'
 		});
+
+		// all
+		lookup.Add("all", delegate(bool enabled)
+		{
+			foreach (string name in lookup.Keys)
+			{
+				if (name == "all") continue;
+				lookup[name](enabled);
+			}
+		});
 	}
 
 	void Execute (string name)
