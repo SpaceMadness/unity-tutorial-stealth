@@ -64,6 +64,11 @@ public class DoneEnemySight : MonoBehaviour
         {
 			// By default the player is not in sight.
 			playerInSight = false;
+
+			// return here to remain invisible
+			#if UNITY_EDITOR
+			if (DebugCheat.disableEnemyAI) return;
+			#endif
 			
 			// Create a vector from the enemy to the player and store the angle between it and forward.
             Vector3 direction = other.transform.position - transform.position;

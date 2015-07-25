@@ -53,9 +53,9 @@ class EnableDisableCommand : CPlayModeCommand // only available in play mode
 		// laser fences
 		lookup.Add("laserFences", delegate(bool enabled)
 		{
-			// 1. find all cameras
+			// 1. find all laser fences
 			GameObject[] fences = GameObject.FindGameObjectsWithTag("LaserFence");
-			
+
 			// 2.enable/disable
 			foreach (GameObject fence in fences)
 			{
