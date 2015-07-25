@@ -63,6 +63,12 @@ class EnableDisableCommand : CPlayModeCommand // only available in play mode
 				fence.GetComponent<MeshRenderer>().material.color = enabled ? Color.red : Color.green;
 			}
 		});
+
+		// enemy ai
+		lookup.Add("ai", delegate(bool enabled)
+		{
+			DebugCheat.disableEnemyAI = !enabled; // 'disable' is opposite to 'enable'
+		});
 	}
 
 	void Execute (string name)
