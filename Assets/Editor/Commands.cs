@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -59,5 +60,24 @@ class EnableDisableCommand : CPlayModeCommand // only available in play mode
 		} else {
 			PrintError ("Unknown item: '{0}'", name);
 		}
+	}
+
+	protected override IList<string> AutoCompleteArgs (string commandLine, string token)
+	{
+		List<string> suggestions = new List<string>();
+
+		// find items
+		foreach (string name in lookup.Keys)
+		{
+			if (name.StartsWith(token, StringComparison.OrdinalIgnoreCase))
+			{
+				suggestions.Add(name);
+			}
+		}
+
+		// sort items
+		suggestions.Sort();
+
+		return suggestions;
 	}
 }
