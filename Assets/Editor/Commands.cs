@@ -34,6 +34,20 @@ class EnableDisableCommand : CPlayModeCommand // only available in play mode
 	{
 		this.lookup = new Dictionary<string, EnableDisableDelegate> ();
 		this.flag = flag;
+
+		// cameras
+		lookup.Add("cameras", delegate(bool enabled)
+		{
+			// 1. find all cameras
+			GameObject[] cameras = GameObject.FindGameObjectsWithTag("Camera");
+
+			// 2.enable/disable
+			foreach (GameObject camera in cameras)
+			{
+				camera.GetComponent<MeshCollider>().enabled = enabled;
+				camera.GetComponent<Light>().color = enabled ? Color.red : Color.green;
+			}
+		});
 	}
 
 	void Execute (string name)
