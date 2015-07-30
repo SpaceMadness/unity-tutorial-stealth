@@ -64,6 +64,8 @@ public class DoneEnemySight : MonoBehaviour
         {
 			// By default the player is not in sight.
 			playerInSight = false;
+
+			// Return here to remain invisible
 			
 			// Create a vector from the enemy to the player and store the angle between it and forward.
             Vector3 direction = other.transform.position - transform.position;
